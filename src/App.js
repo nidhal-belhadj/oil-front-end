@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { v4 as uuidv4 } from "uuid";
+import TodoContainer from "./components/TodoContainer";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
+const App = () => {
+  const todos = [
+    { id: uuidv4(), title: "Setup development environment", completed: true },
+    {
+      id: uuidv4(),
+      title: "Develop website and add content",
+      completed: false,
+    },
+    { id: uuidv4(), title: "Deploy to live server", completed: false },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+        <div className="App">
+          <header className="App-header">
+            <TodoContainer todos={todos} />
+          </header>
+        </div>
   );
-}
+};
 
 export default App;
